@@ -1,0 +1,112 @@
+-- Operators: + - * / & | ! == != < > <= >=
+/*
+
+CREATE      [DB,...]
+DELETE      [DB,...]
+LOAD        [DB,...]
+SAVE        [DB,...]
+DROP        [DB,...]
+PATH        "PATH"
+PRINT       [STATEMENT]
+
+INSERT      ...
+REMOVE      [STATEMENT]
+DELETE      [STATEMENT]
+UPDATE      [STATEMENT]
+
+STATEMENT: [
+    SELECT ...
+    WHERE  ...
+    FROM   [DB]
+]
+
+AS          BUILD & NAME new ROW
+TO          NEW Entry
+
+PRINT 
+SELECT *,10*1 AS WOW
+WHERE Hello==13 AND OR NOT
+FROM db1;
+
+*/
+--PATH *;
+
+CREATE db1;
+DELETE db1;
+
+LOAD db1;
+SAVE db1;
+DROP db1;
+
+CREATE Hello VARCHAR,World FLOAT,Hello1 LONG,World1 INT
+FROM db1;
+
+INSERT "Hello World",1.0,5,9
+FROM db1;
+
+UPDATE Alex TO 10
+FROM db1
+WHERE Hello==13;
+
+PRINT *;
+
+--CREATE Hello VARCHAR,World FLOAT,Hello1 LONG,World1 INT
+--FROM db1,db2;
+--INSERT "Hello World",1.0,5,9
+--FROM db1,db2;
+--INSERT "Hello Welt",2.0,6,10
+--FROM db1,db2;
+--INSERT "Hallo World",3.0,7,11
+--FROM db1,db2;
+--INSERT "Hallo Welt",4.0,8,12
+--FROM db1,db2;
+--PRINT *;
+--PRINT db1,db2;
+--DELETE Hello
+--FROM db1;
+--DROP db1,db2;
+--SAVE db1,db2;
+
+LOAD db1,db2;
+
+PRINT *;
+PRINT db1,db2;
+
+PRINT Hello,World1
+WHERE Hello1>=6 & World1>10
+FROM db1;
+
+SELECT Hello,World1
+WHERE Hello1>=6 & World1>10
+FROM db1;
+
+PRINT OUT;
+
+DELETE db1,db2;
+
+/*
+
+REMOVE
+
+DELETE Wow
+FROM db1;
+
+COPY db2
+FROM db1;
+
+MOVE db2
+WHERE Hello==13
+FROM db1;
+
+INSERT 10,10,20
+FROM db1
+
+DELETE
+FROM db1
+WHERE Hello==13;
+
+UPDATE Alex TO 10
+FROM db1
+WHERE Hello==13;
+
+*/

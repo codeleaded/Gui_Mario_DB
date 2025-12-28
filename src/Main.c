@@ -30,7 +30,8 @@ void Setup(AlxWindow* w){
     //QueryLanguage_Print(&ql);
     //QueryLanguage_InterpretLine(&ql," -- Hello World\nLOAD db1; /* WOw \n ok */ LOAD db2;");
 
-    QueryLanguage_InterpretScript(&ql,"./code/Main.alxql");//argv[1]
+    QueryLanguage_InterpretScript(&ql,"./code/New.alxql");
+    QueryLanguage_InterpretScript(&ql,"./code/Print.alxql");
     QueryLanguage_Free(&ql);
 }
 

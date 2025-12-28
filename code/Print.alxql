@@ -1,0 +1,6 @@
+LOAD db1;
+
+PRINT *;
+PRINT db1;
+
+DELETE db1;

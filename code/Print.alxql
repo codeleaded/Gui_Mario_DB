@@ -1,6 +1,6 @@
-LOAD db1;
+LOAD players;
 
 PRINT *;
-PRINT db1;
+PRINT players;
 
-DELETE db1;
+DELETE players;

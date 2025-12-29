@@ -1,19 +1,10 @@
-LOAD db1;
-DELETE db1;
+LOAD players;
+DELETE players;
 
-CREATE db1;
+CREATE players;
 
-CREATE Playername VARCHAR,Score INT,Posx FLOAT,Posy FLOAT
-FROM db1;
+CREATE Playername VARCHAR,Score INT
+FROM players;
 
-INSERT "Alex",10,1.0,1.0
-FROM db1;
-
-INSERT "Michi",11,2.0,2.0
-FROM db1;
-
-INSERT "Yanis",12,3.0,3.0
-FROM db1;
-
-SAVE db1;
-DELETE db1;
+SAVE players;
+DELETE players;

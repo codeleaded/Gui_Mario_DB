@@ -14,42 +14,46 @@
 #endif
 
 
+QueryLanguage ql;
 
 void Setup(AlxWindow* w){
-    CStr path = Files_cwd();
-    CStr target = CStr_Concat(path,"/data");
-    CStr_Free(&path);
-    //printf("Target: %s\n",target);
-    
-    QueryLanguage ql = QueryLanguage_New(target);
-    CStr_Free(&target);
+    ql = QueryLanguage_New("./data");
+    QueryLanguage_Load(&ql,"./data/players.alxdb","players");
 
-    //QueryLanguage_Load(&ql,"./Database1.alxdb","Database1");
-
-    //QueryLanguage_InterpretLine(&ql,"CREATE db2;");
-    //QueryLanguage_Print(&ql);
-    //QueryLanguage_InterpretLine(&ql," -- Hello World\nLOAD db1; /* WOw \n ok */ LOAD db2;");
-
-    QueryLanguage_InterpretScript(&ql,"./code/New.alxql");
-    QueryLanguage_InterpretScript(&ql,"./code/Print.alxql");
-    QueryLanguage_Free(&ql);
+    //QueryLanguage_InterpretScript(&ql,"./code/New.alxql");
+    //QueryLanguage_InterpretScript(&ql,"./code/Print.alxql");
 }
 
 void Update(AlxWindow* w){
-    if(Stroke(ALX_KEY_ENTER).PRESSED){
-        
-    }
+
 
 	Clear(BLACK);
 
+    TT_Iter db_it = QueryLanguage_FindDB(&ql,"players");
+    if(db_it!=TT_INVALID){
+        Database* db = (Database*)Vector_Get(&ql.databases,db_it);
+        
+        for(int i = 0;i<db->data.size;i++){
+            Vector* vec = (Vector*)Vector_Get(&db->data,i);
+            
+            CStr_RenderAlxFontf(WINDOW_STD_ARGS,GetAlxFont(),1 * GetAlxFont()->CharSizeX,i * GetAlxFont()->CharSizeY,WHITE,"Player:");
+            for(int j = 0;j<vec->size;j++){
+                void** ptr = (void**)Vector_Get(vec,j);
+
+                Token tok = QueryLanguage_TokenDatabaseFunc(*ptr,(DB_Info*)Vector_Get(&db->types,j));
+                CStr_RenderAlxFont(WINDOW_STD_ARGS,GetAlxFont(),tok.str,(j + 1) * 10 * GetAlxFont()->CharSizeX,i * GetAlxFont()->CharSizeY,WHITE);
+                Token_Free(&tok);
+            }
+        }
+    }
 }
 
 void Delete(AlxWindow* w){
-    
+    QueryLanguage_Free(&ql);
 }
 
 int main(){
-    if(Create("Game with Database",2500,1200,1,1,Setup,Update,Delete))
+    if(Create("Mario Server with Database",2500,1200,1,1,Setup,Update,Delete))
         Start();
     return 0;
 }

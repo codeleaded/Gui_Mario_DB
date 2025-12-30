@@ -1,0 +1,7 @@
+LOAD players;
+
+SELECT Playername,Score
+BY Score
+FROM db1;
+
+DELETE players;

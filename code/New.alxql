@@ -1,9 +1,6 @@
-LOAD players;
-DELETE players;
-
 CREATE players;
 
-CREATE Playername VARCHAR,Score INT
+CREATE PlayerId INT PRIMARY,Playername VARCHAR,Score INT
 FROM players;
 
 SAVE players;
